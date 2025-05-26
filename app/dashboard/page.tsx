@@ -57,10 +57,10 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <div className="min-h-screen pt-24 sm:pt-28 pb-10 sm:pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       <div className="fixed inset-0 z-0">
         <motion.div
-          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-violet-500/10 blur-[100px]"
+          className="absolute top-0 right-0 w-60 h-60 sm:w-96 sm:h-96 rounded-full bg-violet-500/10 blur-[60px] sm:blur-[100px]"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -68,7 +68,7 @@ const Dashboard = () => {
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-pink-500/10 blur-[100px]"
+          className="absolute bottom-0 left-0 w-60 h-60 sm:w-96 sm:h-96 rounded-full bg-pink-500/10 blur-[60px] sm:blur-[100px]"
           animate={{
             scale: [1, 1.1, 1],
             opacity: [0.2, 0.4, 0.2]
@@ -77,14 +77,14 @@ const Dashboard = () => {
         />
       </div>
 
-      <div className="relative z-10 pt-20 px-4 mx-auto max-w-7xl">
+      <div className="relative z-10 pt-10 sm:pt-20 px-2 sm:px-4 mx-auto max-w-3xl md:max-w-5xl lg:max-w-7xl">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="space-y-8"
         >
-          <motion.div variants={cardVariants} className="text-center mb-12">
+          <motion.div variants={cardVariants} className="text-center mb-8 sm:mb-12">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -97,17 +97,17 @@ const Dashboard = () => {
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   className="absolute -top-2 -right-2"
                 >
-                  <Sparkles className="w-6 h-6 text-yellow-400" />
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
                 </motion.div>
                 {session?.user?.image ? (
                   <img
                     src={session.user.image}
                     alt="Profile"
-                    className="w-20 h-20 rounded-full border-4 border-purple-400 shadow-lg"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-purple-400 shadow-lg"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-lg">
-                    <User className="w-10 h-10 text-white" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-lg">
+                    <User className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                   </div>
                 )}
               </div>
@@ -115,21 +115,21 @@ const Dashboard = () => {
 
             <motion.h1
               variants={cardVariants}
-              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent mb-4"
+              className="text-2xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent mb-2 sm:mb-4"
             >
               Welcome Back!
             </motion.h1>
 
             <motion.p
               variants={cardVariants}
-              className="text-xl text-white/80"
+              className="text-lg sm:text-xl text-white/80"
             >
               Hello, <span className="font-semibold text-white">{session?.user?.name || 'Pizza Lover'}</span>
             </motion.p>
 
             <motion.p
               variants={cardVariants}
-              className="text-white/60 mt-2"
+              className="text-white/60 mt-1 sm:mt-2 text-sm sm:text-base"
             >
               Ready to order some delicious pizza today?
             </motion.p>
@@ -137,7 +137,7 @@ const Dashboard = () => {
 
           <motion.div
             variants={cardVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12"
           >
             {statsData.map((stat, index) => (
               <motion.div
@@ -148,18 +148,18 @@ const Dashboard = () => {
                   y: -5
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:border-white/30 transition-all duration-300"
+                className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/20 hover:border-white/30 transition-all duration-300"
               >
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-2 sm:mb-4">
                   <motion.div
-                    className={`p-3 rounded-xl bg-gradient-to-r ${stat.color}`}
+                    className={`p-2 sm:p-3 rounded-xl bg-gradient-to-r ${stat.color}`}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <stat.icon className="w-6 h-6 text-white" />
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </motion.div>
                   <motion.div
-                    className="text-3xl font-bold text-white"
+                    className="text-2xl sm:text-3xl font-bold text-white"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5 + index * 0.1, type: "spring" }}
@@ -167,98 +167,98 @@ const Dashboard = () => {
                     {stat.value}
                   </motion.div>
                 </div>
-                <p className="text-white/70 font-medium">{stat.label}</p>
+                <p className="text-white/70 font-medium text-xs sm:text-base">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             <motion.div
               variants={cardVariants}
-              className="lg:col-span-2 bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
+              className="lg:col-span-2 bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-8 border border-white/20"
             >
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <Pizza className="w-7 h-7 text-orange-400" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                <Pizza className="w-6 h-6 sm:w-7 sm:h-7 text-orange-400" />
                 Quick Actions
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="p-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
+                  className="p-4 sm:p-6 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <Pizza className="w-6 h-6" />
-                    <span className="text-lg">Order Pizza</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                    <Pizza className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="text-base sm:text-lg">Order Pizza</span>
                   </div>
-                  <p className="text-white/80 text-sm">Browse our delicious menu</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Browse our delicious menu</p>
                 </motion.button>
 
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
+                  className="p-4 sm:p-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <Clock className="w-6 h-6" />
-                    <span className="text-lg">Track Orders</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                    <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="text-base sm:text-lg">Track Orders</span>
                   </div>
-                  <p className="text-white/80 text-sm">Check your order status</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Check your order status</p>
                 </motion.button>
 
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="p-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
+                  className="p-4 sm:p-6 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <Heart className="w-6 h-6" />
-                    <span className="text-lg">Favorites</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                    <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="text-base sm:text-lg">Favorites</span>
                   </div>
-                  <p className="text-white/80 text-sm">Your saved pizzas</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Your saved pizzas</p>
                 </motion.button>
 
                 <motion.button
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="p-6 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
+                  className="p-4 sm:p-6 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl text-white font-semibold text-left hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="flex items-center gap-3 mb-2">
-                    <Star className="w-6 h-6" />
-                    <span className="text-lg">Reviews</span>
+                  <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                    <Star className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="text-base sm:text-lg">Reviews</span>
                   </div>
-                  <p className="text-white/80 text-sm">Rate your experience</p>
+                  <p className="text-white/80 text-xs sm:text-sm">Rate your experience</p>
                 </motion.button>
               </div>
             </motion.div>
 
             <motion.div
               variants={cardVariants}
-              className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
+              className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-8 border border-white/20"
             >
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                <Award className="w-7 h-7 text-yellow-400" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                <Award className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" />
                 Achievements
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {achievements.map((achievement, index) => (
                   <motion.div
                     key={achievement.title}
                     variants={cardVariants}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-start gap-4 p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
                   >
                     <motion.div
-                      className="p-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex-shrink-0"
+                      className="p-1 sm:p-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex-shrink-0"
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <achievement.icon className="w-5 h-5 text-white" />
+                      <achievement.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </motion.div>
                     <div>
-                      <h3 className="font-semibold text-white text-sm">{achievement.title}</h3>
+                      <h3 className="font-semibold text-white text-xs sm:text-sm">{achievement.title}</h3>
                       <p className="text-white/60 text-xs mt-1">{achievement.description}</p>
                     </div>
                   </motion.div>
@@ -269,14 +269,14 @@ const Dashboard = () => {
 
           <motion.div
             variants={cardVariants}
-            className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20"
+            className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-8 border border-white/20"
           >
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <TrendingUp className="w-7 h-7 text-green-400" />
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+              <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7 text-green-400" />
               Recent Activity
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {[
                 { action: "Ordered Margherita Pizza", time: "2 hours ago", status: "delivered" },
                 { action: "Rated Pepperoni Pizza", time: "1 day ago", status: "completed" },
@@ -286,14 +286,14 @@ const Dashboard = () => {
                   key={index}
                   variants={cardVariants}
                   whileHover={{ x: 5 }}
-                  className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 sm:p-4 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300"
                 >
                   <div>
-                    <p className="text-white font-medium">{activity.action}</p>
-                    <p className="text-white/60 text-sm">{activity.time}</p>
+                    <p className="text-white font-medium text-sm sm:text-base">{activity.action}</p>
+                    <p className="text-white/60 text-xs sm:text-sm">{activity.time}</p>
                   </div>
                   <motion.div
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    className={`mt-2 sm:mt-0 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-medium ${
                       activity.status === 'delivered' ? 'bg-green-500/20 text-green-400' :
                       activity.status === 'completed' ? 'bg-blue-500/20 text-blue-400' :
                       'bg-purple-500/20 text-purple-400'

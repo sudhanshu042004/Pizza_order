@@ -112,7 +112,7 @@ const Header = () => {
             variants={headerVariants}
             initial="hidden"
             animate="visible"
-            className='fixed z-50 rounded-2xl backdrop-blur-xl bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 left-0 right-0 mx-4 mt-6 sm:mx-6 sm:mt-6 lg:mx-40 lg:mt-6 shadow-2xl shadow-purple-500/10'
+            className='fixed z-50 rounded-2xl backdrop-blur-xl bg-gradient-to-r from-white/10 via-white/5 to-white/10 border border-white/20 left-0 right-0 mx-2 sm:mx-6 lg:mx-40 mt-3 sm:mt-6 shadow-2xl shadow-purple-500/10'
         >
             <motion.div
                 className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500/10 via-purple-500/10 to-pink-500/10"
@@ -127,10 +127,10 @@ const Header = () => {
                 }}
             />
 
-            <div className='relative flex items-center justify-between text-sm h-[70px] px-6 py-2 font-medium'>
+            <div className='relative flex flex-col sm:flex-row items-center justify-between text-sm h-[80px] sm:h-[70px] px-2 sm:px-6 py-2 font-medium'>
                 <motion.div
                     variants={logoVariants}
-                    className='flex items-center gap-3'
+                    className='flex items-center gap-2 sm:gap-3 mb-2 sm:mb-0'
                 >
                     <motion.div
                         whileHover={{
@@ -142,13 +142,13 @@ const Header = () => {
                             type: "spring",
                             stiffness: 200
                         }}
-                        className="p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl shadow-lg"
+                        className="p-1 sm:p-2 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl shadow-lg"
                     >
-                        <Pizza className="w-5 h-5 text-white" />
+                        <Pizza className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </motion.div>
 
                     <motion.div
-                        className='text-lg font-bold bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent'
+                        className='text-base sm:text-lg font-bold bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent'
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 400 }}
                     >
@@ -166,13 +166,13 @@ const Header = () => {
                             delay: 1
                         }}
                     >
-                        <Sparkles className="w-4 h-4 text-yellow-400" />
+                        <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
                     </motion.div>
                 </motion.div>
 
                 <motion.div
                     variants={navVariants}
-                    className='flex items-center space-x-6'
+                    className='flex items-center space-x-2 sm:space-x-6'
                 >
                     <motion.div
                         className='flex items-center'
@@ -181,11 +181,11 @@ const Header = () => {
                     >
                         <Link
                             href={isDashboard ? '/dashboard' : '/dashboard/order'}
-                            className='text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap relative group px-4 py-2 rounded-lg hover:bg-white/10'
+                            className='text-white/80 hover:text-white transition-all duration-300 whitespace-nowrap relative group px-2 sm:px-4 py-2 rounded-lg hover:bg-white/10 text-xs sm:text-base'
                         >
                             {isDashboard ? 'Dashboard' : 'Pizza Orders'}
                             <motion.span
-                                className="absolute left-4 right-4 h-[2px] bg-gradient-to-r from-orange-400 to-red-400 -bottom-1 origin-left"
+                                className="absolute left-2 sm:left-4 right-2 sm:right-4 h-[2px] bg-gradient-to-r from-orange-400 to-red-400 -bottom-1 origin-left"
                                 initial={{ scaleX: 0 }}
                                 whileHover={{ scaleX: 1 }}
                                 transition={{ duration: 0.3 }}
@@ -211,7 +211,7 @@ const Header = () => {
                             />
 
                             <motion.div className="relative ring-2 ring-white/20 rounded-full hover:ring-orange-400/50 transition-all duration-300">
-                                <Avatar className="w-10 h-10">
+                                <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
                                     <AvatarImage src={session?.user?.image!} />
                                     <AvatarFallback className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold">
                                         {session?.user?.name?.charAt(0)?.toUpperCase() || 'U'}
@@ -227,25 +227,25 @@ const Header = () => {
                                     initial="hidden"
                                     animate="visible"
                                     exit="exit"
-                                    className='absolute right-0 mt-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-2 min-w-[180px]'
+                                    className='absolute right-0 mt-2 sm:mt-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl p-2 min-w-[150px] sm:min-w-[180px]'
                                 >
                                     <motion.div
-                                        className="p-3 border-b border-white/10"
+                                        className="p-2 sm:p-3 border-b border-white/10"
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 }}
                                     >
-                                        <p className="text-white font-medium text-sm">
+                                        <p className="text-white font-medium text-xs sm:text-sm">
                                             {session?.user?.name || 'User'}
                                         </p>
-                                        <p className="text-white/60 text-xs">
+                                        <p className="text-white/60 text-[10px] sm:text-xs">
                                             {session?.user?.email}
                                         </p>
                                     </motion.div>
 
                                     <motion.button
                                         onClick={() => signOut()}
-                                        className='w-full text-sm text-red-400 flex items-center gap-3 py-3 px-3 hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 rounded-lg mt-1'
+                                        className='w-full text-xs sm:text-sm text-red-400 flex items-center gap-2 sm:gap-3 py-2 sm:py-3 px-2 sm:px-3 hover:text-red-300 hover:bg-red-500/10 transition-all duration-300 rounded-lg mt-1'
                                         whileHover={{
                                             scale: 1.02,
                                             x: 5
